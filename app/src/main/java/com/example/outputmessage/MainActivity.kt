@@ -70,6 +70,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_starting_main_screen)
 
+        if (Calendar.getInstance().get(Calendar.MONTH) == 12 && Calendar.getInstance().get(Calendar.DATE) == 24) {
+
+            val newView = Intent(this, ChristmasHoliday::class.java)
+            startActivity(newView)
+        }
+
         val valueStarting = findViewById<TextView>(R.id.welcomeValue)
         ValuesSend.createText("Welcome to | RGB Generation |", valueStarting)
         valueStarting.setTextColor(Color.rgb(20, 20, 20))

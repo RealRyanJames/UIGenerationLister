@@ -1,7 +1,6 @@
 package com.example.outputmessage
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -24,7 +23,7 @@ fun setNameButton(): String {
 }
 
 class StartingMainScreen : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,6 +61,5 @@ class StartingMainScreen : AppCompatActivity() {
             btn.setTextColor(Color.rgb(255, 255, 255))
             btn.setBackgroundColor(Color.rgb(20, 20, 20))
         }
-
     }
 }
