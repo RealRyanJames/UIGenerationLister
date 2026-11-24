@@ -43,6 +43,7 @@
         android:minWidth="230.sp"
         android:layout_gravity="center"
         android:layout_marginTop="20.dp"
+        android:text="@string/app_name"
         tools:ignore="MissingConstraints"
     />
 
@@ -53,7 +54,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20.dp"
         android:minWidth="230.sp"
-        android:text="@string/click_me"
+        android:text="@string/app_name"
         tools:ignore="MissingConstraints"
     />
 

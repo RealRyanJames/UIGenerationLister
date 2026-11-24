@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">OutputMessage</string>
     <string name="click_me">Click Me</string>
+    <string name="image_of_a_christmas_tree">Image of a Christmas Tree</string>
 </resources>
