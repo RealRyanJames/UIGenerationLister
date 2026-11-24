@@ -50,7 +50,22 @@ open class DarkElements {
     }
 }
 
+open class LightElements {
+
+    var lightElement: Boolean = true
+        private set
+
+    fun isLight(): Boolean {
+        if (this.lightElement) {
+            this.lightElement = true
+        }
+
+        return this.lightElement
+    }
+}
+
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -61,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         valueStarting.setTextColor(Color.rgb(20, 20, 20))
         valueStarting.textSize = 20f
 
-        var button1 = findViewById<Button>(R.id.btn1)
+        val button1 = findViewById<Button>(R.id.btn1)
         val dateNow = findViewById<TextView>(R.id.dateNow)
         dateNow.text = Calendar.getInstance().time.toString()
         button1.setOnClickListener {
@@ -70,11 +85,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         val darkModeButton = findViewById<Button>(R.id.darkMode)
+
+        darkModeButton.text = "Dark Mode"
+        darkModeButton.setBackgroundColor(Color.rgb(20, 20, 20))
+        darkModeButton.setTextColor(Color.rgb(255, 255, 255))
+
         darkModeButton.setOnClickListener {
 
-            darkModeButton.visibility = View.GONE
             val params = button1.layoutParams as ViewGroup.MarginLayoutParams
-            params.setMargins(10, 700 * 2, 10, 10)
+            params.setMargins(10, 500 * 2, 10, 10)
             button1.layoutParams = params
 
             if (DarkElements().isDark()) {
@@ -85,6 +104,28 @@ class MainActivity : AppCompatActivity() {
                 button1.setTextColor(Color.rgb(20, 20, 20))
                 button1.setBackgroundColor(Color.rgb(255, 255, 255))
                 button1.setTypeface(Typeface.DEFAULT_BOLD)
+            }
+        }
+
+        val lightModeButton = findViewById<Button>(R.id.lightMode)
+        lightModeButton.text = "| Light Mode |"
+
+        lightModeButton.setTextColor(Color.rgb(255, 255, 255))
+        lightModeButton.setBackgroundColor(Color.rgb(20, 20, 20))
+
+        lightModeButton.setOnClickListener {
+
+
+            darkModeButton.visibility = View.VISIBLE
+            darkModeButton.text = " | Dark Mode |"
+            lightModeButton.text = "Light Mode"
+
+            if (LightElements().isLight()) {
+                val mainScreen = findViewById<View>(R.id.welcome)
+                mainScreen.setBackgroundColor(Color.rgb(255, 255, 255))
+                valueStarting.setTextColor(Color.rgb(20, 20, 20))
+                dateNow.setTextColor(Color.rgb(20, 20, 20))
+
             }
         }
 
