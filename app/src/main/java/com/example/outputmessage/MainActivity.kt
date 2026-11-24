@@ -1,5 +1,6 @@
 package com.example.outputmessage
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -7,7 +8,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Calendar
 
+@SuppressLint("SetTextI18n")
 fun createAppendedButton(button: Button) {
 
     button.text = "Enter Application"
@@ -17,6 +20,7 @@ fun createAppendedButton(button: Button) {
 
 object ValuesSend {
 
+    @SuppressLint("SetTextI18n")
     fun createText(text: String = "Welcome to | RGB Generation |", textView: TextView) {
 
         if (text.isEmpty()) {
@@ -39,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         valueStarting.textSize = 20f
 
         val button1 = findViewById<Button>(R.id.btn1)
-
+        val dateNow = findViewById<TextView>(R.id.dateNow)
+        dateNow.text = Calendar.getInstance().time.toString()
         button1.setOnClickListener {
             val newView = Intent(this, StartingMainScreen::class.java)
             startActivity(newView)
