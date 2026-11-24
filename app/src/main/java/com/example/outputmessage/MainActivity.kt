@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -90,35 +89,49 @@ class MainActivity : AppCompatActivity() {
         darkModeButton.setBackgroundColor(Color.rgb(20, 20, 20))
         darkModeButton.setTextColor(Color.rgb(255, 255, 255))
 
-        darkModeButton.setOnClickListener {
-
-            val params = button1.layoutParams as ViewGroup.MarginLayoutParams
-            params.setMargins(10, 500 * 2, 10, 10)
-            button1.layoutParams = params
-
-            if (DarkElements().isDark()) {
-                val mainScreen = findViewById<View>(R.id.welcome)
-                valueStarting.setTextColor(Color.rgb(255, 255, 255))
-                dateNow.setTextColor(Color.rgb(255, 255, 255))
-                mainScreen.setBackgroundColor(DarkMode.`is`())
-                button1.setTextColor(Color.rgb(20, 20, 20))
-                button1.setBackgroundColor(Color.rgb(255, 255, 255))
-                button1.setTypeface(Typeface.DEFAULT_BOLD)
-            }
-        }
-
         val lightModeButton = findViewById<Button>(R.id.lightMode)
         lightModeButton.text = "| Light Mode |"
 
         lightModeButton.setTextColor(Color.rgb(255, 255, 255))
         lightModeButton.setBackgroundColor(Color.rgb(20, 20, 20))
 
-        lightModeButton.setOnClickListener {
+        darkModeButton.setOnClickListener {
 
+            button1.text = "| Visit Mode |"
+            button1.setTextColor(Color.rgb(255, 255, 255))
+            button1.setBackgroundColor(Color.rgb(20, 20, 20))
+
+            if (DarkElements().isDark()) {
+
+                button1.text = "| Visit Mode |"
+                button1.setTextColor(Color.rgb(255, 255, 255))
+                button1.setBackgroundColor(Color.rgb(20, 20, 20))
+
+                lightModeButton.text = "| Light Mode |"
+                val mainScreen = findViewById<View>(R.id.welcome)
+                valueStarting.setTextColor(Color.rgb(255, 255, 255))
+                dateNow.setTextColor(Color.rgb(255, 255, 255))
+                mainScreen.setBackgroundColor(DarkMode.`is`())
+                button1.setTypeface(Typeface.DEFAULT_BOLD)
+            }
+        }
+
+        lightModeButton.text = "| Light Mode |"
+
+        lightModeButton.setTextColor(Color.rgb(255, 255, 255))
+        lightModeButton.setBackgroundColor(Color.rgb(20, 20, 20))
+
+        button1.setTextColor(Color.rgb(255, 255, 255))
+        button1.setBackgroundColor(Color.rgb(20, 20, 20))
+
+        lightModeButton.setOnClickListener {
 
             darkModeButton.visibility = View.VISIBLE
             darkModeButton.text = " | Dark Mode |"
             lightModeButton.text = "Light Mode"
+            button1.text = "| Visit Mode |"
+            button1.setTextColor(Color.rgb(255, 255, 255))
+            button1.setBackgroundColor(Color.rgb(20, 20, 20))
 
             if (LightElements().isLight()) {
                 val mainScreen = findViewById<View>(R.id.welcome)
