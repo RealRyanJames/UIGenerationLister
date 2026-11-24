@@ -3,7 +3,9 @@ package com.example.outputmessage
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +33,22 @@ object ValuesSend {
     }
 }
 
+
+
+open class DarkElements {
+
+    var darkElement: Boolean = true
+        private set
+
+    fun isDark(): Boolean {
+        if (this.darkElement) {
+            this.darkElement = true
+        }
+
+        return this.darkElement
+    }
+}
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +68,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(newView)
         }
 
-        val colorDark = DarkMode.`is`()
+        val darkModeButton = findViewById<Button>(R.id.darkMode)
+        darkModeButton.setOnClickListener {
+
+            button1.visibility = View.GONE
+            
+
+            if (DarkElements().isDark()) {
+                val mainScreen = findViewById<View>(R.id.welcome)
+                valueStarting.setTextColor(Color.rgb(255, 255, 255))
+                dateNow.setTextColor(Color.rgb(255, 255, 255))
+                mainScreen.setBackgroundColor(DarkMode.`is`())
+                button1.setTextColor(Color.rgb(20, 20, 20))
+                button1.setBackgroundColor(Color.rgb(255, 255, 255))
+                button1.setTypeface(Typeface.DEFAULT_BOLD)
+            }
+        }
 
         createAppendedButton(button1)
     }
