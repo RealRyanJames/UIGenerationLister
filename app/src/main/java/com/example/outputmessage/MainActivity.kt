@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         valueStarting.setTextColor(Color.rgb(20, 20, 20))
         valueStarting.textSize = 20f
 
-        val button1 = findViewById<Button>(R.id.btn1)
+        var button1 = findViewById<Button>(R.id.btn1)
         val dateNow = findViewById<TextView>(R.id.dateNow)
         dateNow.text = Calendar.getInstance().time.toString()
         button1.setOnClickListener {
@@ -71,8 +72,10 @@ class MainActivity : AppCompatActivity() {
         val darkModeButton = findViewById<Button>(R.id.darkMode)
         darkModeButton.setOnClickListener {
 
-            button1.visibility = View.GONE
-            
+            darkModeButton.visibility = View.GONE
+            val params = button1.layoutParams as ViewGroup.MarginLayoutParams
+            params.setMargins(10, 700 * 2, 10, 10)
+            button1.layoutParams = params
 
             if (DarkElements().isDark()) {
                 val mainScreen = findViewById<View>(R.id.welcome)
