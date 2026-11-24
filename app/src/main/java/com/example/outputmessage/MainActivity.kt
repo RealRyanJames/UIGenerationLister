@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(newView)
         }
 
+        val colorDark = DarkMode.`is`()
+
         createAppendedButton(button1)
     }
 }
